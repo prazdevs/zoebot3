@@ -1,0 +1,19 @@
+{
+  "name": "zoemains-bot",
+  "version": "1.0.0",
+  "description": "Zoemains Reddit2Twitter Bot",
+  "main": "src/app.js",
+  "author": "PraZ",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "snoowrap": "^1.20.1",
+    "twitter": "^1.7.1"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^8.2.0",
+    "@types/twitter": "^1.7.0",
+    "prettier": "^1.19.1",
+    "typescript": "^3.7.5"
+  }
+}

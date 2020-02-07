@@ -1,9 +1,9 @@
-import dotenv from 'dotenv';
+import { ZoeMainsSubredditFetcher } from './reddit/ZoeMainsSubredditFetcher';
+import { ZoeBot } from './discord/ZoeBot';
 
-import { ZoeSubredditFetcher } from './ZoeSubredditFetcher';
+require('dotenv').config();
 
-dotenv.config();
+const subFetcher = new ZoeMainsSubredditFetcher();
+const zoeBot = new ZoeBot();
 
-const subFetcher = new ZoeSubredditFetcher();
-
-subFetcher.getLatestPostsSince(54000).then(data => console.log(data));
+zoeBot.connect();

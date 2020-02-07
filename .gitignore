@@ -108,4 +108,5 @@ dist/
 tmp/
 temp/
 
-# End of https://www.gitignore.io/api/node
+# Generated files
+posts

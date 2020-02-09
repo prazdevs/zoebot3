@@ -1,5 +1,5 @@
-import { ZoeMainsSubredditFetcher } from './reddit/ZoeMainsSubredditFetcher';
 import { ZoeBot } from './discord/ZoeBot';
+import { ZoeMainsSubredditFetcher } from './reddit/ZoeMainsSubredditFetcher';
 
 require('dotenv').config();
 

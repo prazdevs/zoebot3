@@ -8,8 +8,12 @@ export class SayCommand extends Command<CommandType.say> {
   }
 
   execute = (): void => {
-    this.message.channel.send(this.args.join(' '));
+    if (this.canExecute()) {
+      this.message.channel.send(this.args.join(' '));
+    }
   };
 
-  canExecute = (): boolean => true;
+  canExecute = (): boolean => {
+    return this.message.member.hasPermission('ADMINISTRATOR');
+  };
 }

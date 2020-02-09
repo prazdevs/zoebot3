@@ -8,7 +8,9 @@ export class PingCommand extends Command<CommandType.ping> {
   }
 
   execute = (): void => {
-    this.message.channel.send(`My latency is ${this.client.ping}ms`);
+    if (this.canExecute()) {
+      this.message.channel.send(`My latency is ${this.client.ping}ms`);
+    }
   };
 
   canExecute = (): boolean => true;

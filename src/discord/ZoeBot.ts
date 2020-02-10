@@ -54,7 +54,7 @@ export class ZoeBot {
 
   private startFetchingRoutine = async (): Promise<void> => {
     const chan = this.client.channels.find(
-      channel => channel.id === '675332064664485908'
+      channel => channel.id === '675271307696406545'
     );
 
     const fetchAndPost = async () => {

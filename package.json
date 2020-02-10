@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "postinstall": "tsc",
+    "postinstall": "yarn build",
     "start": "node dist/app.js",
     "dev": "tsc node dist/app.js"
   },

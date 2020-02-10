@@ -1,6 +1,6 @@
 # The Zoemains Bot
 ![Banner](https://i.imgur.com/NiXCe7Q.jpg)
 
-## Automated sharing of reddit submisssions to other platforms & more.
+![Build](https://github.com/prazdevs/zoemains-bot/workflows/Build/badge.svg?branch=master) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![TypeScript](https://badgen.net/badge/icon/typescript?icon=typescript&label)
 
-![Build](https://github.com/prazdevs/zoemains-bot/workflows/Build/badge.svg?branch=master)
+## Automated sharing of reddit submisssions to other platforms & more.

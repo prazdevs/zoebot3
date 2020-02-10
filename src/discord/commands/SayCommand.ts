@@ -10,6 +10,7 @@ export class SayCommand extends Command<CommandType.say> {
   execute = (): void => {
     if (this.canExecute()) {
       this.message.channel.send(this.args.join(' '));
+      this.message.delete();
     }
   };
 

@@ -6,6 +6,7 @@
   "author": "PraZ",
   "license": "MIT",
   "scripts": {
+    "build": "tsc",
     "start": "tsc && node dist/app.js"
   },
   "dependencies": {

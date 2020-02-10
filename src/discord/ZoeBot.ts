@@ -3,7 +3,6 @@ import { Client, Message, RichEmbed, TextChannel } from 'discord.js';
 import { ZoeMainsSubredditFetcher } from '../reddit/ZoeMainsSubredditFetcher';
 import { CommandFactory } from './commands/CommandFactory';
 import { buildEmbed } from './functions/buildEmbed';
-import { postEmbed } from './functions/postEmbed';
 
 export class ZoeBot {
   private prefix: string = 'z!';

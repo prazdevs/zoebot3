@@ -1,4 +1,3 @@
-import moment from 'moment';
 import { Submission } from 'snoowrap';
 
 export class RedditPost {

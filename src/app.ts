@@ -7,4 +7,3 @@ const subFetcher = new ZoeMainsSubredditFetcher();
 const zoeBot = new ZoeBot();
 
 zoeBot.connect();
-// subFetcher.getLatestPosts().then(console.log)

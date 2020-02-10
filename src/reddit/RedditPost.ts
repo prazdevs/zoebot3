@@ -8,7 +8,7 @@ export class RedditPost {
   selfText: string;
   image: string;
   url: string;
-  isVideo: boolean;
+  hasMedia: boolean;
   created: number;
 
   constructor(submission: Submission) {
@@ -19,7 +19,7 @@ export class RedditPost {
     this.thumbnail = submission.thumbnail;
     this.image = submission.url;
     this.url = `http://reddit.com/${submission.permalink}`;
-    this.isVideo = submission.is_video;
+    this.hasMedia = !!submission.media;
     this.created = submission.created_utc;
   }
 }

@@ -13,8 +13,9 @@ export const buildEmbed = (post: RedditPost): RichEmbed => {
 
   if (post.self) {
     embed.setDescription(post.selfText);
-  } else if (post.isVideo) {
+  } else if (post.hasMedia) {
     embed.setImage(post.thumbnail);
+    embed.setDescription('*Click to see the media...');
   } else {
     embed.setImage(post.image);
   }
@@ -23,7 +24,7 @@ export const buildEmbed = (post: RedditPost): RichEmbed => {
 
   embed.setFooter(
     `Posted by u/${post.author}`,
-    'https://i.imgur.com/cjPynWD.png'
+    'https://www.redditstatic.com/desktop2x/img/favicon/favicon-32x32.png'
   );
 
   return embed;

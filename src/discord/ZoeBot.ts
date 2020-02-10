@@ -1,4 +1,4 @@
-import { Client, Message, RichEmbed, TextChannel, Channel } from 'discord.js';
+import { Channel, Client, Message, RichEmbed, TextChannel } from 'discord.js';
 
 import { ZoeMainsSubredditFetcher } from '../reddit/ZoeMainsSubredditFetcher';
 import { CommandFactory } from './commands/CommandFactory';
@@ -20,9 +20,9 @@ export class ZoeBot {
     this.client.login(process.env.D_TOKEN);
   };
 
-  postEmbedMessage = (channel:TextChannel, embed: RichEmbed):void => {
+  postEmbedMessage = (channel: TextChannel, embed: RichEmbed): void => {
     channel.send(embed);
-  }
+  };
 
   private initializeCient = (): void => {
     if (!this.client) return;
@@ -36,20 +36,7 @@ export class ZoeBot {
       console.log('Discord Bot connected');
       await this.client.user.setActivity('with sparkles');
 
-      const chan = this.client.channels.find(
-        channel => channel.id === '675271307696406545'
-      );
-
-      const fetchAndPost = async () => {
-        const fetcher = new ZoeMainsSubredditFetcher();
-        const posts = await fetcher.getLatestPostsSince(300);
-        posts.forEach(post => {
-          const embed: RichEmbed = buildEmbed(post);
-          (chan as TextChannel).send(embed);
-        });
-      };
-
-      setInterval(fetchAndPost, 300000);
+      await this.startFetchingRoutine();
     });
   };
 
@@ -63,5 +50,27 @@ export class ZoeBot {
       const command = this.commandFactory.createCommand(message);
       command.execute();
     });
+  };
+
+  private startFetchingRoutine = async (): Promise<void> => {
+    const chan = this.client.channels.find(
+      channel => channel.id === '675332064664485908'
+    );
+
+    const fetchAndPost = async () => {
+      console.log('Started fetching subreddit posts');
+      const fetcher = new ZoeMainsSubredditFetcher();
+      const posts = await fetcher.getLatestPostsSince(60);
+      posts.forEach(async post => {
+        console.log(`> Posting: ${post.title}`);
+        const embed: RichEmbed = buildEmbed(post);
+        await (chan as TextChannel).send(embed);
+      });
+      console.log('Done fetching subreddit posts');
+    };
+
+    await fetchAndPost();
+
+    setInterval(fetchAndPost, 60000);
   };
 }

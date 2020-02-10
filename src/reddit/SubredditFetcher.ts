@@ -20,7 +20,7 @@ export abstract class SubredditFetcher {
     const latestSubmissions = await this.R.getSubreddit(
       this.subreddit
     ).getNew();
-    const subs = latestSubmissions.slice(2, 3);
+    const subs = latestSubmissions.slice(0, 10);
     return subs;
   };
 

@@ -1,4 +1,4 @@
-import { Client, Message, RichEmbed, TextChannel } from 'discord.js';
+import { Client, Message, RichEmbed, TextChannel, Channel } from 'discord.js';
 
 import { ZoeMainsSubredditFetcher } from '../reddit/ZoeMainsSubredditFetcher';
 import { CommandFactory } from './commands/CommandFactory';
@@ -16,9 +16,13 @@ export class ZoeBot {
     this.initializeCient();
   }
 
-  connect = () => {
+  connect = (): void => {
     this.client.login(process.env.D_TOKEN);
   };
+
+  postEmbedMessage = (channel:TextChannel, embed: RichEmbed):void => {
+    channel.send(embed);
+  }
 
   private initializeCient = (): void => {
     if (!this.client) return;

@@ -1,0 +1,1 @@
+worker: dist/app.js

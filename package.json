@@ -6,7 +6,8 @@
   "author": "PraZ",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node dist/app.js"
+    "build": "tsc --build tsconfig.json",
+    "start": "node dist/app.js"
   },
   "dependencies": {
     "discord.js": "^11.5.1",

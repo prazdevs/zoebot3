@@ -1,7 +1,7 @@
 import { RichEmbed } from 'discord.js';
 
-import { RedditPost } from '../../reddit/RedditPost';
-import { ZoeMainsSubredditFetcher } from '../../reddit/ZoeMainsSubredditFetcher';
+import { RedditPost } from '../reddit/RedditPost';
+import { ZoeMainsSubredditFetcher } from '../reddit/ZoeMainsSubredditFetcher';
 
 export const buildEmbed = (post: RedditPost): RichEmbed => {
   const embed = new RichEmbed();

@@ -2,9 +2,9 @@ import { Channel, Client, Message, RichEmbed, TextChannel } from 'discord.js';
 
 import { ZoeMainsSubredditFetcher } from '../reddit/ZoeMainsSubredditFetcher';
 import { CommandFactory } from './commands/CommandFactory';
-import { buildEmbed } from './functions/buildEmbed';
+import { buildEmbed } from '../utils/buildEmbed';
 
-export class ZoeBot {
+export class DiscordBot {
   private prefix: string = 'z!';
   private client: Client = new Client();
   private commandFactory: CommandFactory = new CommandFactory(
@@ -20,8 +20,15 @@ export class ZoeBot {
     this.client.login(process.env.D_TOKEN);
   };
 
-  postEmbedMessage = (channel: TextChannel, embed: RichEmbed): void => {
-    channel.send(embed);
+  postEmbedMessage = async (channelIds: string[], embed: RichEmbed): Promise<void> => {
+    channelIds.forEach(async channelId => {
+      const textChannel = this.client.channels.find(
+        channel => channel.id === channelId && channel.type === 'text'
+      );
+      if (textChannel) {
+        await (textChannel as TextChannel).send(embed);
+      }
+    });
   };
 
   private initializeCient = (): void => {
@@ -36,7 +43,7 @@ export class ZoeBot {
       console.log('Discord Bot connected');
       await this.client.user.setActivity('with sparkles');
 
-      await this.startFetchingRoutine();
+      // await this.startFetchingRoutine();
     });
   };
 

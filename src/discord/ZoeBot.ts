@@ -60,7 +60,7 @@ export class ZoeBot {
     const fetchAndPost = async () => {
       console.log('Started fetching subreddit posts');
       const fetcher = new ZoeMainsSubredditFetcher();
-      const posts = await fetcher.getLatestPostsSince(60);
+      const posts = await fetcher.getLatestPostsSince(300);
       posts.forEach(async post => {
         console.log(`> Posting: ${post.title}`);
         const embed: RichEmbed = buildEmbed(post);
@@ -71,6 +71,6 @@ export class ZoeBot {
 
     await fetchAndPost();
 
-    setInterval(fetchAndPost, 60000);
+    setInterval(fetchAndPost, 300000);
   };
 }

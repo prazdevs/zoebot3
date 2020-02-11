@@ -1,5 +1,3 @@
-import { Client, Message } from 'discord.js';
-
 export enum CommandType {
   ping,
   say,

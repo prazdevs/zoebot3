@@ -1,8 +1,8 @@
 import { Channel, Client, Message, RichEmbed, TextChannel } from 'discord.js';
 
-import { ZoeMainsSubredditFetcher } from '../reddit/ZoeMainsSubredditFetcher';
 import { CommandFactory } from './commands/CommandFactory';
-import { buildEmbed } from '../utils/buildEmbed';
+import { buildEmbed } from './utils/buildEmbed';
+import { SubredditFetcher } from './reddit/SubredditFetcher';
 
 export class DiscordBot {
   private prefix: string = 'z!';
@@ -18,17 +18,6 @@ export class DiscordBot {
 
   connect = (): void => {
     this.client.login(process.env.D_TOKEN);
-  };
-
-  postEmbedMessage = async (channelIds: string[], embed: RichEmbed): Promise<void> => {
-    channelIds.forEach(async channelId => {
-      const textChannel = this.client.channels.find(
-        channel => channel.id === channelId && channel.type === 'text'
-      );
-      if (textChannel) {
-        await (textChannel as TextChannel).send(embed);
-      }
-    });
   };
 
   private initializeCient = (): void => {
@@ -60,14 +49,16 @@ export class DiscordBot {
   };
 
   private startFetchingRoutine = async (): Promise<void> => {
+    const delaySeconds = 300;
+    
     const chan = this.client.channels.find(
       channel => channel.id === '675271307696406545'
     );
 
     const fetchAndPost = async () => {
       console.log('Started fetching subreddit posts');
-      const fetcher = new ZoeMainsSubredditFetcher();
-      const posts = await fetcher.getLatestPostsSince(300);
+      const fetcher = new SubredditFetcher('zoemains');
+      const posts = await fetcher.getLatestPostsSince(delaySeconds);
       posts.forEach(async post => {
         console.log(`> Posting: ${post.title}`);
         const embed: RichEmbed = buildEmbed(post);
@@ -78,6 +69,6 @@ export class DiscordBot {
 
     await fetchAndPost();
 
-    setInterval(fetchAndPost, 300000);
+    setInterval(fetchAndPost, delaySeconds * 1000);
   };
 }

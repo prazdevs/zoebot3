@@ -3,7 +3,7 @@ import snoowrap from 'snoowrap';
 
 import { RedditPost } from './RedditPost';
 
-export abstract class SubredditFetcher {
+export class SubredditFetcher {
   private R: snoowrap;
 
   constructor(private subreddit: string) {

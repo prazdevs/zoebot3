@@ -1,15 +1,13 @@
-import { SubredditFetcher } from '../reddit/SubredditFetcher';
-import { RichEmbed, TextChannel, Client } from 'discord.js';
+import { Client, RichEmbed, TextChannel } from 'discord.js';
 
 import { RedditPost } from '../reddit/RedditPost';
+import { SubredditFetcher } from '../reddit/SubredditFetcher';
 
 export const startFetchAndPostRoutine = async (
   delaySeconds: number,
   subreddit: string,
   discordClient: Client
 ): Promise<void> => {
-
-
   const chan = discordClient.channels.find(
     channel => channel.id === '675271307696406545'
   );
@@ -59,4 +57,3 @@ const buildEmbed = (post: RedditPost): RichEmbed => {
 
   return embed;
 };
-

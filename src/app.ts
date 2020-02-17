@@ -1,9 +1,7 @@
-import { ZoeBot } from './discord/ZoeBot';
-import { ZoeMainsSubredditFetcher } from './reddit/ZoeMainsSubredditFetcher';
+import { DiscordBot } from './DiscordBot';
 
 require('dotenv').config();
 
-const subFetcher = new ZoeMainsSubredditFetcher();
-const zoeBot = new ZoeBot();
+const zoeBot = new DiscordBot();
 
 zoeBot.connect();

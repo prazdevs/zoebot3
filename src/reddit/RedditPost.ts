@@ -18,7 +18,7 @@ export class RedditPost {
     this.selfText = submission.selftext;
     this.thumbnail = submission.thumbnail;
     this.image = submission.url;
-    this.url = `http://reddit.com/${submission.permalink}`;
+    this.url = `http://reddit.com${submission.permalink}`;
     this.hasMedia = !!submission.media;
     this.created = submission.created_utc;
   }

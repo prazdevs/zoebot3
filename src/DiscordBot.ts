@@ -33,6 +33,7 @@ export class DiscordBot {
 
       //* routines
       await startFetchAndPostRoutine(30,'zoemains', this.client);
+
     });
   };
 

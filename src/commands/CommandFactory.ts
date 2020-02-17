@@ -1,8 +1,8 @@
 import { Client, Message } from 'discord.js';
 
 import { Command, CommandType } from './Command';
-import { PingCommand } from './PingCommand';
-import { SayCommand } from './SayCommand';
+import { PingCommand } from './Ping.command';
+import { SayCommand } from './Say.command';
 
 export class CommandFactory {
   constructor(private client: Client, private prefix: string) {}

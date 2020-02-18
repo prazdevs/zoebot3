@@ -12,7 +12,7 @@ jobs:
     - name: Setup NodeJs
       uses: actions/setup-node@v1
       with:
-        version: 13.8.0
+        node-version: 13.x
     - name: Install dependencies
       run: yarn install
     - name: Build project

@@ -26,18 +26,20 @@ export const startFetchAndPostRoutine = async (
       try {
         const embed: RichEmbed = buildEmbed(post);
         await (chan as TextChannel).send(embed);
+        console.log(`  > Successfully posted to Discord: ${post.title}`);
       } catch (err) {
         console.error(
-          `>Failed posting to Discord (${post.title}): ${err.message}`
+          `  > Failed posting to Discord (${post.title}): ${err.message}`
         );
       }
 
       try {
         const status = buildTweet(post);
         await poster.tweet(status);
+        console.log(`  > Successfully posted to Twitter: ${post.title}`);
       } catch (err) {
         console.error(
-          `>Failed posting to Twitter (${post.title}): ${err.message}`
+          `  > Failed posting to Twitter (${post.title}): ${err.message}`
         );
       }
     });
@@ -77,5 +79,7 @@ const buildEmbed = (post: RedditPost): RichEmbed => {
 };
 
 const buildTweet = (post: RedditPost): string => {
-  return `${post.title}\nby u/${post.author}\n${post.url}`;
+  const title =
+    post.title.length < 100 ? post.title : `${post.title.substring(0, 100)}...`;
+  return `${title}\n\nby u/${post.author}\n\n#LeagueOfLegends #ZoeMains\n${post.url}`;
 };

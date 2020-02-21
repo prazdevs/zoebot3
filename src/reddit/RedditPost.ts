@@ -9,6 +9,7 @@ export class RedditPost {
   image: string;
   url: string;
   hasMedia: boolean;
+  flair: string;
   created: number;
 
   constructor(submission: Submission) {
@@ -20,6 +21,7 @@ export class RedditPost {
     this.image = submission.url;
     this.url = `http://reddit.com${submission.permalink}`;
     this.hasMedia = !!submission.media;
+    this.flair = `[${submission.link_flair_text}]` ?? '[Post]';
     this.created = submission.created_utc;
   }
 }

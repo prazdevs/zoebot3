@@ -1,5 +1,4 @@
-import Twitter, { AccessTokenOptions } from 'twitter';
-import { RedditPost } from '../reddit/RedditPost';
+import Twitter from 'twitter';
 
 export class TwitterPoster {
   private T: Twitter;
@@ -21,22 +20,7 @@ export class TwitterPoster {
     });
   }
 
-  postReddit =  async(post: RedditPost): Promise<void> => {
-    const twitterPost = new TwitterPost(post);
-
-    this.T.post('statuses/update', { status: twitterPost.status });
-  };
-
-  postTweet = async (tweet: string): Promise<void> => {
+  tweet = async (tweet: string): Promise<void> => {
     await this.T.post('statuses/update', { status: tweet });
   };
-
-  
 }
-export class TwitterPost {
-  status: string;
-
-  constructor(post: RedditPost) {
-    this.status = `${post.title} by u/${post.author} ${post.url}`;
-  }
-};

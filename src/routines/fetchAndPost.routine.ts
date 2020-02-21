@@ -54,7 +54,7 @@ export const startFetchAndPostRoutine = async (
 const buildEmbed = (post: RedditPost): RichEmbed => {
   const embed = new RichEmbed();
 
-  embed.setAuthor('New post on r/zoemains !');
+  embed.setAuthor(`New post on r/zoemains ! ${post.flair}`);
   embed.setTitle(post.title);
   embed.setURL(post.url);
   embed.setColor('#9230a7');
@@ -63,7 +63,7 @@ const buildEmbed = (post: RedditPost): RichEmbed => {
     embed.setDescription(post.selfText);
   } else if (post.hasMedia) {
     embed.setImage(post.thumbnail);
-    embed.setDescription('*Click to see the media...');
+    embed.setDescription('This post contains media...');
   } else {
     embed.setImage(post.image);
   }
@@ -81,5 +81,7 @@ const buildEmbed = (post: RedditPost): RichEmbed => {
 const buildTweet = (post: RedditPost): string => {
   const title =
     post.title.length < 100 ? post.title : `${post.title.substring(0, 100)}...`;
-  return `${title}\n\nby u/${post.author}\n\n#LeagueOfLegends #ZoeMains\n${post.url}`;
+  const hashtags = '#LeagueOfLegends #ZoeMains';
+
+  return `${post.flair}\n\n${title}\n\nby u/${post.author}\n\n${hashtags}\n${post.url}`;
 };

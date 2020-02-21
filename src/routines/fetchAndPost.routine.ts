@@ -2,6 +2,7 @@ import { Client, RichEmbed, TextChannel } from 'discord.js';
 
 import { RedditPost } from '../reddit/RedditPost';
 import { SubredditFetcher } from '../reddit/SubredditFetcher';
+import { TwitterPoster } from '../twitter/TwitterPoster';
 
 export const startFetchAndPostRoutine = async (
   delaySeconds: number,
@@ -16,18 +17,35 @@ export const startFetchAndPostRoutine = async (
     console.log('Started fetching subreddit posts');
 
     const fetcher = new SubredditFetcher(subreddit);
+    const poster = new TwitterPoster();
 
     const posts = await fetcher.getLatestPostsSince(delaySeconds);
     posts.forEach(async post => {
       console.log(`> Posting: ${post.title}`);
-      const embed: RichEmbed = buildEmbed(post);
-      await (chan as TextChannel).send(embed);
+
+      try {
+        const embed: RichEmbed = buildEmbed(post);
+        await (chan as TextChannel).send(embed);
+      } catch (err) {
+        console.error(
+          `>Failed posting to Discord (${post.title}): ${err.message}`
+        );
+      }
+
+      try {
+        const status = buildTweet(post);
+        await poster.tweet(status);
+      } catch (err) {
+        console.error(
+          `>Failed posting to Twitter (${post.title}): ${err.message}`
+        );
+      }
     });
+
     console.log('Done fetching subreddit posts');
   };
 
   await fetchAndPost();
-
   setInterval(fetchAndPost, delaySeconds * 1000);
 };
 
@@ -56,4 +74,8 @@ const buildEmbed = (post: RedditPost): RichEmbed => {
   );
 
   return embed;
+};
+
+const buildTweet = (post: RedditPost): string => {
+  return `${post.title}\nby u/${post.author}\n${post.url}`;
 };

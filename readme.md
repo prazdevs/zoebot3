@@ -5,7 +5,7 @@
 
 ## A discord bot that shares from Reddit to Discord & Twitter, but also gives sparkly powers to your Discord experience
 
-Originally made for the **[r/zoemains](http://reddit.com/r/zoemains)** community, I try to keep this bot as generic as possible for anyone to re-use. 
+Originally made for the **[r/zoemains](http://reddit.com/r/zoemains)** community, I try to keep this bot as generic as possible for anyone to re-use. If you do so, just make sure to credit me :)
 
 ### What can she do now ?
 

@@ -18,17 +18,17 @@ Originally made for the **[r/zoemains](http://reddit.com/r/zoemains)** community
 
 To ensure having a 100% working Zoe, you will need to provide access to different APIs through environment variables :
 - Discord :
-  - D_TOKEN: \<Discord bot token\>
+  - `D_TOKEN`: \<Discord bot token\>
 - Reddit (you can create a special account for safety purpose) : 
-  - R_CLIENT_ID: \<reddit app id\>
-  - R_CLIENT_SECRET: \<reddit app secret\>
-  - R_USERNAME: \<reddit username\>
-  - R_PASSWORD: \<reddit password\>
+  - `R_CLIENT_ID`: \<reddit app id\>
+  - `R_CLIENT_SECRET`: \<reddit app secret\>
+  - `R_USERNAME`: \<reddit username\>
+  - `R_PASSWORD`: \<reddit password\>
 - Twitter :
-  - T_CONSUMER_KEY=\<Twitter API key\>
-  - T_CONSUMER_SECRET=\<Twitter API secret key\>
-  - T_ACCESS_TOKEN_KEY=\<Twitter access token\>
-  - T_ACCESS_TOKEN_SECRET=\<Twitter access token secret\>
+  - `T_CONSUMER_KEY`:\<Twitter API key\>
+  - `T_CONSUMER_SECRET`:\<Twitter API secret key\>
+  - `T_ACCESS_TOKEN_KEY`:\<Twitter access token\>
+  - `T_ACCESS_TOKEN_SECRET`:\<Twitter access token secret\>
   
 ### How do you start it ?
 

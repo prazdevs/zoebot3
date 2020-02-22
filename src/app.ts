@@ -1,4 +1,5 @@
 import { DiscordBot } from './DiscordBot';
+import { SubredditFetcher } from './reddit/SubredditFetcher';
 
 require('dotenv').config();
 

@@ -32,7 +32,7 @@ export class DiscordBot {
       await this.client.user.setActivity('with sparkles');
 
       //* routines
-      await startFetchAndPostRoutine(30, 'aww', this.client);
+      await startFetchAndPostRoutine(30, 'zoemains', this.client);
     });
   };
 

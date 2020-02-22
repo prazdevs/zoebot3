@@ -9,46 +9,29 @@ export const startFetchAndPostRoutine = async (
   subreddit: string,
   discordClient: Client
 ): Promise<void> => {
-  const chan = discordClient.channels.find(
-    channel => channel.id === '675271307696406545'
-  );
-
   const fetchAndPost = async () => {
-    console.log('Started fetching subreddit posts');
+    const posts = await fetchPosts(subreddit, delaySeconds);
 
-    const fetcher = new SubredditFetcher(subreddit);
-    const poster = new TwitterPoster();
-
-    const posts = await fetcher.getLatestPostsSince(delaySeconds);
     posts.forEach(async post => {
-      console.log(`> Posting: ${post.title}`);
-
-      try {
-        const embed: RichEmbed = buildEmbed(post);
-        await (chan as TextChannel).send(embed);
-        console.log(`  > Successfully posted to Discord: ${post.title}`);
-      } catch (err) {
-        console.error(
-          `  > Failed posting to Discord (${post.title}): ${err.message}`
-        );
-      }
-
-      try {
-        const status = buildTweet(post);
-        await poster.tweet(status);
-        console.log(`  > Successfully posted to Twitter: ${post.title}`);
-      } catch (err) {
-        console.error(
-          `  > Failed posting to Twitter (${post.title}): ${err.message}`
-        );
-      }
+      await postEmbed(post, ['675271307696406545'], discordClient);
+      await postTweet(post);
     });
-
-    console.log('Done fetching subreddit posts');
   };
 
   await fetchAndPost();
   setInterval(fetchAndPost, delaySeconds * 1000);
+};
+
+//* Sync methods *//
+
+const findDiscordChannels = (
+  client: Client,
+  channelIds: string[]
+): TextChannel[] => {
+  return channelIds.map(channelId => {
+    const channel = client.channels.find(c => c.id === channelId);
+    return channel as TextChannel;
+  });
 };
 
 const buildEmbed = (post: RedditPost): RichEmbed => {
@@ -84,4 +67,54 @@ const buildTweet = (post: RedditPost): string => {
   const hashtags = '#LeagueOfLegends #ZoeMains';
 
   return `${post.flair}\n\n${title}\n\nby u/${post.author}\n\n${hashtags}\n${post.url}`;
+};
+
+//* Async methods *//
+
+const fetchPosts = async (
+  subreddit: string,
+  delaySeconds: number
+): Promise<RedditPost[]> => {
+  const fetcher = new SubredditFetcher(subreddit);
+  try {
+    const posts = await fetcher.getLatestPostsSince(delaySeconds);
+    console.log(`Fetched ${posts.length} posts`);
+    return posts;
+  } catch (error) {
+    console.error(`(!) Error while fetching from r/${subreddit}`);
+    return [];
+  }
+};
+
+const postEmbed = async (
+  post: RedditPost,
+  channelIds: string[],
+  client: Client
+): Promise<void> => {
+  const channels = findDiscordChannels(client, channelIds);
+  const embed: RichEmbed = buildEmbed(post);
+
+  channels.forEach(async channel => {
+    try {
+      await channel.send(embed);
+      console.log(
+        `  Successfully posted '${post.id}' to ${channel.guild}>${channel.name}`
+      );
+    } catch (err) {
+      console.error(
+        `  Failed to post ${post.id} to ${channel.guild}>${channel.name} : ${err.message}`
+      );
+    }
+  });
+};
+
+const postTweet = async (post: RedditPost): Promise<void> => {
+  const poster = new TwitterPoster();
+  const status = buildTweet(post);
+  try {
+    await poster.tweet(status);
+    console.log(`  Successfully posted '${post.id}' to Twitter`);
+  } catch (err) {
+    console.error(`  Failed to post '${post.id}' to Twitter : ${err.message}`);
+  }
 };

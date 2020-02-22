@@ -40,9 +40,13 @@ This assumes you have created a bot at [discordapp/developers](https://discordap
 ```
 yarn
 yarn build
-yarn dev
+yarn start
 ```
 4. Feel free to deploy on Heroku as a worker if you feel like it!
+
+### Notes
+
+This project is still under construction and a big work in progress, you may encounter some unexpected behaviors and funny *undocumented surprise features* (bugs don't exist, right ?). A lot of features and potential will be added to the project! But hey, at least you shouldn't face a type error... :)
 
 ### Helping me
 

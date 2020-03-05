@@ -29,7 +29,7 @@ export class DiscordBot {
   private setReadyHandler = (): void => {
     this.client.on('ready', async () => {
       console.log('Discord Bot connected');
-      await this.client.user.setActivity('with sparkles');
+      await this.client.user.setActivity('with sparkles | praz.dev');
 
       //* routines
       await startFetchAndPostRoutine(30, 'aww', this.client);

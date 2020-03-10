@@ -20,7 +20,7 @@ export class TwitterPoster {
     });
   }
 
-  tweet = async (tweet: string): Promise<void> => {
+  async tweet(tweet: string): Promise<void> {
     await this.T.post('statuses/update', { status: tweet });
   };
 }

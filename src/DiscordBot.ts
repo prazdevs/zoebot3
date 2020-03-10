@@ -25,23 +25,23 @@ export class DiscordBot {
     return DiscordBot.instance;
   }
 
-  connect = (): void => {
+  connect(): void {
     this.client
       .login(process.env.D_TOKEN)
       .then(_ => console.log('Connected to Discord'))
       .catch(error =>
         console.error(`Could not connect. Error: ${error.message}`)
       );
-  };
+  }
 
-  private initializeCient = (): void => {
+  private initializeCient(): void {
     if (!this.client) return;
 
     this.setReadyHandler();
     this.setMessageHandler();
-  };
+  }
 
-  private setReadyHandler = (): void => {
+  private setReadyHandler(): void {
     this.client.on('ready', async () => {
       console.log('Discord Bot connected');
       await this.client.user.setActivity('with sparkles | praz.dev');
@@ -49,9 +49,9 @@ export class DiscordBot {
       //* routines
       await startFetchAndPostRoutine(30, 'zoemains', this.client);
     });
-  };
+  }
 
-  private setMessageHandler = (): void => {
+  private setMessageHandler(): void {
     this.client.on('message', async (message: Message) => {
       //* filters out requests from bots and other prefixes
       if (message.author.bot) return;
@@ -61,5 +61,5 @@ export class DiscordBot {
       const command = this.commandFactory.createCommand(message);
       await command.execute();
     });
-  };
+  }
 }

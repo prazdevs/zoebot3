@@ -4,6 +4,8 @@ import { CommandFactory } from './commands/CommandFactory';
 import { startFetchAndPostRoutine } from './routines/fetchAndPost.routine';
 
 export class DiscordBot {
+  private static instance: DiscordBot;
+
   private prefix: string = 'z!';
   private client: Client = new Client();
   private commandFactory: CommandFactory = new CommandFactory(
@@ -11,8 +13,16 @@ export class DiscordBot {
     this.prefix
   );
 
-  constructor() {
+  private constructor() {
     this.initializeCient();
+  }
+
+  static getInstance(): DiscordBot {
+    if (!DiscordBot.instance) {
+      DiscordBot.instance = new DiscordBot();
+    }
+
+    return DiscordBot.instance;
   }
 
   connect = (): void => {

@@ -3,7 +3,7 @@
 
 [![Build](https://github.com/prazdevs/zoemains-bot/workflows/Build/badge.svg?branch=master)](https://github.com/prazdevs/zoebot3/actions?query=workflow%3ABuild)
 [![Vulnerabilities](https://snyk.io/test/github/prazdevs/zoebot3/badge.svg)](https://snyk.io/test/github/prazdevs/zoebot3)
-[![Maintainability](https://api.codeclimate.com/v1/badges/d45a9175718fe108867b/maintainability)](https://codeclimate.com/github/prazdevs/zoemains-bot/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/c8807eec09ae3d536867/maintainability)](https://codeclimate.com/github/prazdevs/zoebot3/maintainability)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
 
 ## A discord bot that shares from Reddit to Discord & Twitter, but also gives sparkly powers to your Discord experience

@@ -16,7 +16,12 @@ export class DiscordBot {
   }
 
   connect = (): void => {
-    this.client.login(process.env.D_TOKEN);
+    this.client
+      .login(process.env.D_TOKEN)
+      .then(_ => console.log('Connected to Discord'))
+      .catch(error =>
+        console.error(`Could not connect. Error: ${error.message}`)
+      );
   };
 
   private initializeCient = (): void => {
@@ -38,13 +43,13 @@ export class DiscordBot {
 
   private setMessageHandler = (): void => {
     this.client.on('message', async (message: Message) => {
-      //* filters out requests from bot and other prefixes
+      //* filters out requests from bots and other prefixes
       if (message.author.bot) return;
       if (message.content.indexOf(this.prefix) !== 0) return;
 
       //* delegates creation to factory & executes
       const command = this.commandFactory.createCommand(message);
-      command.execute();
+      await command.execute();
     });
   };
 }

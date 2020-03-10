@@ -7,7 +7,7 @@ export class SayCommand extends Command<CommandType.say> {
     super();
   }
 
-  execute = async (): Promise<void> => {
+  async execute(): Promise<void> {
     if (this.canExecute()) {
       try {
         await this.message.channel.send(this.args.join(' '));
@@ -18,7 +18,7 @@ export class SayCommand extends Command<CommandType.say> {
     }
   };
 
-  canExecute = (): boolean => {
+  canExecute(): boolean {
     return this.message.member.hasPermission('ADMINISTRATOR');
   };
 }

@@ -7,7 +7,7 @@ import { SayCommand } from './Say.command';
 export class CommandFactory {
   constructor(private client: Client, private prefix: string) {}
 
-  createCommand = (message: Message): Command<CommandType> => {
+  createCommand(message: Message): Command<CommandType> | null {
     const [keyword, args] = this.parseCommand(message.content);
 
     switch (keyword) {
@@ -18,11 +18,11 @@ export class CommandFactory {
         return new PingCommand(message, this.client);
 
       default:
-        throw 'Keyword not implemented';
+        return null;
     }
-  };
+  }
 
-  private parseCommand = (messageContent: string): [CommandType, string[]] => {
+  private parseCommand(messageContent: string): [CommandType, string[]] {
     const args = messageContent
       .slice(this.prefix.length)
       .trim()
@@ -30,5 +30,5 @@ export class CommandFactory {
     const keyword = args.shift()?.toLowerCase() ?? '';
     const commandType = CommandType[keyword as keyof typeof CommandType];
     return [commandType, args];
-  };
+  }
 }

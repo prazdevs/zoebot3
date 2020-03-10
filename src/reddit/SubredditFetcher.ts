@@ -1,5 +1,5 @@
 import moment from 'moment';
-import snoowrap from 'snoowrap';
+import snoowrap, { Submission } from 'snoowrap';
 
 import { RedditPost } from './RedditPost';
 
@@ -12,27 +12,27 @@ export class SubredditFetcher {
       clientSecret: process.env.R_CLIENT_SECRET,
       username: process.env.R_USERNAME,
       password: process.env.R_PASSWORD,
-      userAgent: 'ZoemainsBot-V3',
+      userAgent: 'ZoeBot3',
     });
   }
 
-  getCompleteLatestPosts = async () => {
+  async getCompleteLatestPosts(): Promise<Submission[]> {
     const latestSubmissions = await this.R.getSubreddit(
       this.subreddit
     ).getNew();
     const subs = latestSubmissions.slice(0, 10);
     return subs;
-  };
+  }
 
-  getLatestPostsSince = async (delayInSeconds: number) => {
+  async getLatestPostsSince(delayInSeconds: number): Promise<RedditPost[]> {
     const latestPosts = await this.getLatestPosts();
     const filtered = latestPosts.filter(
       post => moment().unix() - post.created < delayInSeconds
     );
     return filtered;
-  };
+  }
 
-  getLatestPosts = async (): Promise<RedditPost[]> => {
+  async getLatestPosts(): Promise<RedditPost[]> {
     const latestSubmissions = await this.R.getSubreddit(
       this.subreddit
     ).getNew();
@@ -40,5 +40,5 @@ export class SubredditFetcher {
       submission => new RedditPost(submission)
     );
     return latestPosts;
-  };
+  }
 }

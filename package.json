@@ -15,7 +15,7 @@
     "discord.js": "^11.5.1",
     "dotenv": "^8.2.0",
     "moment": "^2.24.0",
-    "mongoose": "^5.9.1",
+    "mongoose": "^5.9.2",
     "snoowrap": "^1.20.1",
     "twitter": "^1.7.1"
   },

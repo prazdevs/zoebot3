@@ -16,7 +16,7 @@
     "dotenv": "^8.2.0",
     "moment": "^2.24.0",
     "mongoose": "^5.9.2",
-    "snoowrap": "^1.20.1",
+    "snoowrap": "^1.21.0",
     "twitter": "^1.7.1"
   },
   "devDependencies": {

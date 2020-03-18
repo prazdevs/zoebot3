@@ -3224,10 +3224,10 @@ snekfetch@^3.6.4:
   resolved "https://registry.yarnpkg.com/snekfetch/-/snekfetch-3.6.4.tgz#d13e80a616d892f3d38daae4289f4d258a645120"
   integrity sha512-NjxjITIj04Ffqid5lqr7XdgwM7X61c/Dns073Ly170bPQHLm6jkmelye/eglS++1nfTWktpP6Y2bFXjdPlQqdw==
 
-snoowrap@^1.20.1:
-  version "1.20.1"
-  resolved "https://registry.yarnpkg.com/snoowrap/-/snoowrap-1.20.1.tgz#f103196624f2a8e904f998126dec05132fd218f4"
-  integrity sha512-xl9j/EroD5E/ruYuseZllCiwhNgS8iUtptQsa8TUvJnO8v3BXVrUzMMHeM1owkZyjAt/zLkLWqgsLni3++E/gQ==
+snoowrap@^1.21.0:
+  version "1.21.0"
+  resolved "https://registry.yarnpkg.com/snoowrap/-/snoowrap-1.21.0.tgz#559d30a11152860d3a4322f113963308c62df969"
+  integrity sha512-vSQlfm0ikek6mezBhTGtYw0vk4hdpgIrtm2o4kZPDzg0HVs4b/Kw7COEfD8TujQP0zzp9EGSwa1rkHufBrwkEw==
   dependencies:
     bluebird "^3.5.5"
     lodash "^4.17.15"

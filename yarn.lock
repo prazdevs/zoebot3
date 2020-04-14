@@ -1095,13 +1095,13 @@ diff-sequences@^25.1.0:
   resolved "https://registry.yarnpkg.com/diff-sequences/-/diff-sequences-25.1.0.tgz#fd29a46f1c913fd66c22645dc75bffbe43051f32"
   integrity sha512-nFIfVk5B/NStCsJ+zaPO4vYuLjlzQ6uFvPxzYyHlejNZ/UGa7G/n7peOXVrVNvRuyfstt+mZQYGpjxg9Z6N8Kw==
 
-discord.js@^11.5.1:
-  version "11.5.1"
-  resolved "https://registry.yarnpkg.com/discord.js/-/discord.js-11.5.1.tgz#910fb9f6410328581093e044cafb661783a4d9e8"
-  integrity sha512-tGhV5xaZXE3Z+4uXJb3hYM6gQ1NmnSxp9PClcsSAYFVRzH6AJH74040mO3afPDMWEAlj8XsoPXXTJHTxesqcGw==
+discord.js@^11.6.1:
+  version "11.6.3"
+  resolved "https://registry.yarnpkg.com/discord.js/-/discord.js-11.6.3.tgz#134dbc6b4878a1dd4e32c85a670010799bf8d33e"
+  integrity sha512-dwIzHB5GPU9O/WiNw42d0yco0JED5bOjCPiHwU9VSSCkEhnyOdx5iqt7Dl2PQZAMNzWPI/t9oyCziOuzFlwm3Q==
   dependencies:
     long "^4.0.0"
-    prism-media "^0.0.3"
+    prism-media "^0.0.4"
     snekfetch "^3.6.4"
     tweetnacl "^1.0.0"
     ws "^6.0.0"
@@ -2801,10 +2801,10 @@ pretty-format@^25.1.0:
     ansi-styles "^4.0.0"
     react-is "^16.12.0"
 
-prism-media@^0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/prism-media/-/prism-media-0.0.3.tgz#8842d4fae804f099d3b48a9a38e3c2bab6f4855b"
-  integrity sha512-c9KkNifSMU/iXT8FFTaBwBMr+rdVcN+H/uNv1o+CuFeTThNZNTOrQ+RgXA1yL/DeLk098duAeRPP3QNPNbhxYQ==
+prism-media@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/prism-media/-/prism-media-0.0.4.tgz#df5ddc6463670c97ff0e9cbac3c3e0db18df326f"
+  integrity sha512-dG2w7WtovUa4SiYTdWn9H8Bd4JNdei2djtkP/Bk9fXq81j5Q15ZPHYSwhUVvBRbp5zMkGtu0Yk62HuMcly0pRw==
 
 process-nextick-args@~2.0.0:
   version "2.0.1"

@@ -14,7 +14,7 @@
     "prepare": "yarn run snyk-protect"
   },
   "dependencies": {
-    "discord.js": "^11.6.1",
+    "discord.js": "^11.6.4",
     "dotenv": "^8.2.0",
     "moment": "^2.24.0",
     "mongoose": "^5.9.5",

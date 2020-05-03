@@ -12,7 +12,7 @@ export const startFetchAndPostRoutine = async (
   const fetchAndPost = async () => {
     const posts = await fetchPosts(subreddit, delaySeconds);
 
-    posts.forEach(async post => {
+    posts.forEach(async (post) => {
       await postEmbed(post, ['675271307696406545'], discordClient);
       await postTweet(post);
     });
@@ -28,8 +28,8 @@ const findDiscordChannels = (
   client: Client,
   channelIds: string[]
 ): TextChannel[] => {
-  return channelIds.map(channelId => {
-    const channel = client.channels.find(c => c.id === channelId);
+  return channelIds.map((channelId) => {
+    const channel = client.channels.find((c) => c.id === channelId);
     return channel as TextChannel;
   });
 };
@@ -94,7 +94,7 @@ const postEmbed = async (
   const channels = findDiscordChannels(client, channelIds);
   const embed: RichEmbed = buildEmbed(post);
 
-  channels.forEach(async channel => {
+  channels.forEach(async (channel) => {
     try {
       await channel.send(embed);
       console.log(

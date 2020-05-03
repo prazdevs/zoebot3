@@ -16,21 +16,21 @@
   "dependencies": {
     "discord.js": "^11.6.4",
     "dotenv": "^8.2.0",
-    "moment": "^2.24.0",
-    "mongoose": "^5.9.5",
+    "moment": "^2.25.1",
+    "mongoose": "^5.9.11",
     "snoowrap": "^1.21.0",
-    "twitter": "^1.7.1",
-    "snyk": "^1.316.1"
+    "snyk": "^1.316.1",
+    "twitter": "^1.7.1"
   },
   "devDependencies": {
     "@types/dotenv": "^8.2.0",
-    "@types/jest": "^25.1.2",
-    "@types/mongoose": "^5.7.1",
+    "@types/jest": "^25.2.1",
+    "@types/mongoose": "^5.7.14",
     "@types/twitter": "^1.7.0",
-    "jest": "^25.1.0",
-    "prettier": "^1.19.1",
-    "ts-jest": "^25.2.0",
-    "typescript": "^3.7.5"
+    "jest": "^25.5.4",
+    "prettier": "^2.0.5",
+    "ts-jest": "^25.4.0",
+    "typescript": "^3.8.3"
   },
   "snyk": true
 }

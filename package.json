@@ -16,10 +16,10 @@
   "dependencies": {
     "discord.js": "^11.6.4",
     "dotenv": "^8.2.0",
-    "moment": "^2.25.1",
     "mongoose": "^5.9.12",
+    "moment": "^2.25.3",
     "snoowrap": "^1.21.0",
-    "snyk": "^1.316.1",
+    "snyk": "^1.317.0",
     "twitter": "^1.7.1"
   },
   "devDependencies": {

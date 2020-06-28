@@ -16,9 +16,9 @@ export class SayCommand extends Command<CommandType.say> {
         console.error(`Could not execute command Say. Error: ${err.message}`);
       }
     }
-  };
+  }
 
   canExecute(): boolean {
-    return this.message.member.hasPermission('ADMINISTRATOR');
-  };
+    return this.message.member?.hasPermission('ADMINISTRATOR') ?? false;
+  }
 }

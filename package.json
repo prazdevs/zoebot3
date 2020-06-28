@@ -9,17 +9,14 @@
     "build": "tsc --build tsconfig.json",
     "start": "node dist/app.js",
     "dev": "yarn build && yarn start",
-    "test": "jest",
-    "snyk-protect": "snyk protect",
-    "prepare": "yarn run snyk-protect"
+    "test": "jest"
   },
   "dependencies": {
-    "discord.js": "^11.6.4",
+    "discord.js": "^12.2.0",
     "dotenv": "^8.2.0",
     "moment": "^2.25.3",
     "mongoose": "^5.9.11",
     "snoowrap": "^1.21.0",
-    "snyk": "^1.317.0",
     "twitter": "^1.7.1"
   },
   "devDependencies": {
@@ -27,10 +24,10 @@
     "@types/jest": "^25.2.1",
     "@types/mongoose": "^5.7.14",
     "@types/twitter": "^1.7.0",
+    "@types/ws": "^7.2.5",
     "jest": "^25.5.4",
     "prettier": "^2.0.5",
     "ts-jest": "^25.4.0",
     "typescript": "^3.8.3"
-  },
-  "snyk": true
+  }
 }

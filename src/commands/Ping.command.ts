@@ -10,7 +10,9 @@ export class PingCommand extends Command<CommandType.ping> {
   async execute(): Promise<void> {
     if (this.canExecute()) {
       try {
-        await this.message.channel.send(`My latency is ${this.client.ping}ms`);
+        await this.message.channel.send(
+          `My latency is ${this.client.ws.ping}ms`
+        );
       } catch (err) {
         console.error(`Could not execute command Say. Error: ${err.message}`);
       }

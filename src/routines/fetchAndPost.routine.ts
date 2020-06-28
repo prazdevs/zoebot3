@@ -1,4 +1,4 @@
-import { Client, RichEmbed, TextChannel } from 'discord.js';
+import { Client, MessageEmbed, TextChannel } from 'discord.js';
 
 import { RedditPost } from '../reddit/RedditPost';
 import { SubredditFetcher } from '../reddit/SubredditFetcher';
@@ -29,13 +29,13 @@ const findDiscordChannels = (
   channelIds: string[]
 ): TextChannel[] => {
   return channelIds.map((channelId) => {
-    const channel = client.channels.find((c) => c.id === channelId);
+    const channel = client.channels.cache.find((c) => c.id === channelId);
     return channel as TextChannel;
   });
 };
 
-const buildEmbed = (post: RedditPost): RichEmbed => {
-  const embed = new RichEmbed();
+const buildEmbed = (post: RedditPost): MessageEmbed => {
+  const embed = new MessageEmbed();
 
   embed.setAuthor(`New post on r/zoemains ! ${post.flair}`);
   embed.setTitle(post.title);
@@ -92,7 +92,7 @@ const postEmbed = async (
   client: Client
 ): Promise<void> => {
   const channels = findDiscordChannels(client, channelIds);
-  const embed: RichEmbed = buildEmbed(post);
+  const embed: MessageEmbed = buildEmbed(post);
 
   channels.forEach(async (channel) => {
     try {
@@ -102,7 +102,7 @@ const postEmbed = async (
       );
     } catch (err) {
       console.error(
-        `  Failed to post ${post.id} to ${channel.guild}>${channel.name} : ${err.message}`
+        `  Failed to post ${post.id} to ${channel?.guild}>${channel?.name} : ${err.message}`
       );
     }
   });

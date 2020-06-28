@@ -28,8 +28,8 @@ export class DiscordBot {
   connect(): void {
     this.client
       .login(process.env.D_TOKEN)
-      .then(_ => console.log('Connected to Discord'))
-      .catch(error =>
+      .then((_) => console.log('Connected to Discord'))
+      .catch((error) =>
         console.error(`Could not connect. Error: ${error.message}`)
       );
   }
@@ -44,7 +44,7 @@ export class DiscordBot {
   private setReadyHandler(): void {
     this.client.on('ready', async () => {
       console.log('Discord Bot connected');
-      await this.client.user.setActivity('with sparkles | praz.dev');
+      await this.client.user?.setActivity('with sparkles | praz.dev');
 
       //* routines
       await startFetchAndPostRoutine(30, 'zoemains', this.client);
